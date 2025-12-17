@@ -3,7 +3,7 @@ import path from 'path';
 import methodOverride from 'method-override';
 import expressLayouts from 'express-ejs-layouts';
 import multer from 'multer';
-import { sql } from './database/db-utilities.js';
+import { allThreads } from './public/js/home.js';
 
 // dirname = nome directory
 const __dirname = import.meta.dirname;
@@ -20,9 +20,8 @@ app.use(express.json());
 
 app.get('/', async (req, res) => {
     try {
-        const threads = await sql("SHOW owner, title, description FROM threads");
-        const personalThreads = await sql("SHOW onwer, title, description LIMIT 5");
-        res.render('home', { threads, personalThreads });
+        allThreads();
+        res.render('home', { allThreads });
     } catch (e) {
         console.error(e.message);
         res.status(500).send("Errore DB");
