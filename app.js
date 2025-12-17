@@ -20,8 +20,8 @@ app.use(express.json());
 
 app.get('/', async (req, res) => {
     try {
-        allThreads();
-        res.render('home', { allThreads });
+        const resAllThreads = await allThreads();
+        res.render('home', { resAllThreads });
     } catch (e) {
         console.error(e.message);
         res.status(500).send("Errore DB");
