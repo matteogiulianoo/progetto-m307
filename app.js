@@ -4,6 +4,7 @@ import methodOverride from 'method-override';
 import expressLayouts from 'express-ejs-layouts';
 import multer from 'multer';
 import { allThreads, newThreads } from './public/js/home.js';
+import { getAllData } from './public/js/users.js';
 
 // dirname = nome directory
 const __dirname = import.meta.dirname;
@@ -22,6 +23,12 @@ app.use(express.json());
 app.get('/', async (req, res) => {
     try {
         const resAllThreads = await allThreads();
+        /*
+            // recupera tutti i dati di un utente connesso
+            const allData = await getAllData();
+
+            si dovrà passare allData dopo resAllThreads in res.render()
+        */
         res.render('home', { resAllThreads });
     } catch (e) {
         console.error(e.message);
