@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-theme="night">
     <head>
         <%- include('head') %>
     </head>
     <body>
         <%- include('navbar') %>
+        <div class="flex w-full">
+            <%- include('threads') %>
+            <%- include('user-details') %>
+        </div>
         <%- body %>
         <%- include('footer') %>
     </body>

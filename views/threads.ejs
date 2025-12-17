@@ -1,0 +1,28 @@
+<div class="card rounded-box grid h-full m-4 w-300 grow place-items-center">
+    <li class="p-4 pb-2 text-m opacity-60 tracking-wide">
+        Premi
+        <kbd class="kbd kbd-sm">SPACE</kbd>
+        per creare un nuovo thread
+    </li>
+
+    <ul class="list bg-base-100 rounded-box shadow-md h-250" style="overflow: scroll;">
+        
+        <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">Ultimi threads caricati</li>
+        
+        <% for (var i = 0; i < 20; i++) { %>
+        <li class="list-row">
+            <div><img class="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/1@94.webp"/></div>
+            <div>
+            <div>Dio Lupa</div>
+            <div class="text-xs uppercase font-semibold opacity-60">Remaining Reason</div>
+            </div>
+            <p class="list-col-wrap text-xs">
+            "Remaining Reason" became an instant hit, praised for its haunting sound and emotional depth. A viral performance brought it widespread recognition, making it one of Dio Lupa’s most iconic tracks.
+            </p>
+            <button class="btn btn-square btn-ghost">
+            <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g stroke-linejoin="round" stroke-linecap="round" stroke-width="2" fill="none" stroke="currentColor"><path d="M6 3L20 12 6 21 6 3z"></path></g></svg>
+            </button>
+        </li>
+        <% } %>
+    </ul>
+</div>

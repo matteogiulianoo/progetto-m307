@@ -1,0 +1,31 @@
+<div class="card bg-base-200 rounded-box grid h-250 m-4 grow place-items-center">
+    <div class="user-info flex flex-col text-center place-items-center w-full">
+        <div class="avatar mb-4">
+            <div class="ring-primary ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
+                <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
+            </div>
+        </div>
+        <div class="badge badge-success mb-2 font-semibold">Developer</div>
+        <p class="text-l">Matteo Giuliano</p>
+        <p class="text-m mb-4">Ticino, Svizzera</p>
+
+        <ul class="list bg-base-100 rounded-box shadow-md">
+            <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">Ultimi 5 threads caricati</li>
+            <% for (var i = 0; i < 5; i++) { %>
+            <li class="list-row">
+                <div><img class="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/1@94.webp"/></div>
+                <div>
+                <div>Dio Lupa</div>
+                <div class="text-xs uppercase font-semibold opacity-60">Remaining Reason</div>
+                </div>
+                <p class="list-col-wrap text-xs">
+                "Remaining Reason" became an instant hit, praised for its haunting sound...
+                </p>
+                <button class="btn btn-square btn-ghost">
+                <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g stroke-linejoin="round" stroke-linecap="round" stroke-width="2" fill="none" stroke="currentColor"><path d="M6 3L20 12 6 21 6 3z"></path></g></svg>
+                </button>
+            </li>
+            <% } %>
+        </ul>
+    </div>
+</div>
