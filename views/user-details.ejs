@@ -6,21 +6,38 @@
                 <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
             </div>
         </div>
-        <div class="badge badge-success mb-2 font-semibold">Developer</div>
-        <p class="text-l">Matteo Giuliano</p>
-        <p class="text-m mb-4">Ticino, Svizzera</p>
+        <% if (allData.role && allData.role[0].namePermission == "Developer") { %>
+            <div class="badge badge-success mb-2 font-semibold">
+                <%= allData.role[0].namePermission %>
+            </div>
+        <% } else if (allData.role && allData.role[0].namePermission == "Administrator") { %>
+            <div class="badge badge-error mb-2 font-semibold">
+                <%= allData.role[0].namePermission %>
+            </div>
+        <% } else { %>
+            <div class="badge badge-warning mb-2 font-semibold">
+                <%= allData.role[0].namePermission %>
+            </div>
+        <% } %>
+        
+        <p class="text-l"><%= allData.fullName[0].fullName %></p>
+        <p class="text-m mb-4"><%= allData.canton[0].canton %>, <%= allData.state[0].state %></p>
 
         <ul class="list rounded-box">
-            <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">Ultimi 5 threads caricati</li>
-            <% for (var i = 0; i < 5; i++) { %>
+            <% if (pThreads.length == 0) { %>
+                <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">Nessun thread è stato pubblicato</li>
+            <% } else { %>
+                <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">Ultimi 5 threads pubblicati</li>
+            <% } %>
+            <% for (var i = 0; i < pThreads.length; i++) { %>
             <li class="list-row mb-4 bg-base-100 shadow-md">
                 <div><img class="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/1@94.webp"/></div>
                 <div>
-                <div>Dio Lupa</div>
-                <div class="text-xs uppercase font-semibold opacity-60">Remaining Reason</div>
+                <div><%= pThreads[i].owner %></div>
+                <div class="text-xs uppercase font-semibold opacity-60"><%= pThreads[i].title %></div>
                 </div>
                 <p class="list-col-wrap text-xs">
-                "Remaining Reason" became an instant hit, praised for its haunting sound...
+                <%= pThreads[i].short_desc %>
                 </p>
                 <button class="btn btn-square btn-ghost">
                 <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g stroke-linejoin="round" stroke-linecap="round" stroke-width="2" fill="none" stroke="currentColor"><path d="M6 3L20 12 6 21 6 3z"></path></g></svg>

@@ -5,7 +5,7 @@ import expressLayouts from 'express-ejs-layouts';
 import multer from 'multer';
 import fs from 'fs';
 import session from 'express-session';
-import { allThreads, newThreads } from './public/js/home.js';
+import { allThreads, newThreads, personalThreads } from './public/js/home.js';
 import { getAllData, login, register } from './public/js/users.js';
 import { parseINIString } from './public/js/utilities.js';
 
@@ -44,13 +44,9 @@ app.use((req, res, next) => {
 app.get('/', isAuthenticated, async (req, res) => {
     try {
         const resAllThreads = await allThreads();
-        /*
-            // recupera tutti i dati di un utente connesso
-            const allData = await getAllData();
-
-            si dovrà passare allData dopo resAllThreads in res.render()
-        */
-        res.render('home', { resAllThreads });
+        const pThreads = await personalThreads(req.session.idUser);
+        const allData = await getAllData(req.session.idUser);
+        res.render('home', { resAllThreads, allData, pThreads });
     } catch (e) {
         console.error(e.message);
         res.status(500).send("Errore DB");

@@ -11,7 +11,7 @@ const saltRounds = 10;
  * @param {*} idCurrentUser 
  */
 export async function getFullName(idCurrentUser) {
-    return await sql("SELECT CONCAT(name, ' ', surname) FROM users WHERE idUser = ?", [idCurrentUser])
+    return await sql("SELECT CONCAT(name, ' ', surname) as fullName FROM users WHERE idUser = ?", [idCurrentUser])
         .then(res => {
             return res;
         })
@@ -56,7 +56,7 @@ export async function getState(idCurrentUser) {
  * @param {*} idCurrentUser 
  */
 export async function getRole(idCurrentUser) {
-    return await sql("SELECT p.namePermission FROM users u JOIN role_permissions rp ON u.idRole = rp.idRole JOIN permissions p ON rp.idPermission = p.idPermission WHERE u.idUser = ?", [idCurrentUser])
+    return await sql("SELECT p.namePermission FROM users u JOIN permissions rp ON u.idPermission = rp.idPermission JOIN permissions p ON rp.idPermission = p.idPermission WHERE u.idUser = ?", [idCurrentUser])
         .then(res => {
             return res;
         })
@@ -71,16 +71,20 @@ export async function getRole(idCurrentUser) {
  * @param {*} idCurrentUser 
  */
 export async function getAllData(idCurrentUser) {
-    const fullName = getFullName(idCurrentUser);
-    const canton = getCanton(idCurrentUser);
-    const state = getState(idCurrentUser);
-    const role = getRole(idCurrentUser);
+    const fullName = await getFullName(idCurrentUser);
+    const canton = await getCanton(idCurrentUser);
+    const state = await getState(idCurrentUser);
+    const role = await getRole(idCurrentUser);
 
-    const data = [
-        {fullName: fullName, canton: canton, state: state, role: role}
-    ];
+    var data = 
+        {
+            fullName: fullName, 
+            canton: canton, 
+            state: state, 
+            role: role
+        };
 
-    const res = data && data.length > 0 ? data : null;
+    const res = data != null ? data : null;
     return res;
 }
 

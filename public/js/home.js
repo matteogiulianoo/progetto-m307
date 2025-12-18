@@ -90,7 +90,7 @@ export async function allThreads() {
  * @param {*} idCurrentUser 
  */
 export async function personalThreads(idCurrentUser) {
-    return await sql("SELECT u.name AS owner, t.title, CASE WHEN CHAR_LENGTH(t.description) > 100 THEN CONCAT(LEFT(t.description, 50), '...' ELSE t.description END AS short_desc FROM threads t JOIN users u ON u.idUser = t.owner WHERE t.owner = ? LIMIT 5", [idCurrentUser])
+    return await sql("SELECT u.name AS owner, t.title, CASE WHEN CHAR_LENGTH(t.description) > 100 THEN CONCAT(LEFT(t.description, 50), '...') ELSE t.description END AS short_desc FROM threads t JOIN users u ON u.idUser = t.owner WHERE t.owner = ? LIMIT 5", [idCurrentUser])
         .then(res => {
             return res;
         })
