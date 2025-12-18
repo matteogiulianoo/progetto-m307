@@ -49,12 +49,12 @@ app.post('/createThread', async (req, res) => {
         console.error(e.message);
         res.status(500).send("Errore DB");
     }
-})
+});
 
 // Aggiorna un thread
-app.patch('/')
+//app.patch('/')
 
 // Elimina un thread
-app.delete('/')
+//app.delete('/')
 
 app.listen(3000);

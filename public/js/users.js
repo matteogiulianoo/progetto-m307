@@ -1,5 +1,4 @@
 import { sql } from '../../database/db-utilities.js';
-import { currentUser } from './utilities.js';
 
 // -----------------------------------------------------------------
 // SELECT QUERY
