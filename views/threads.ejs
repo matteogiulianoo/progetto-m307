@@ -7,6 +7,7 @@
 
     <ul class="list bg-base-100 rounded-box shadow-md h-250" style="overflow: scroll;">
 
+        <!-- Modal creazione thread -->
         <dialog id="my_modal_3" class="modal">
             <div class="modal-box">
                 <form method="dialog">
@@ -28,6 +29,35 @@
                 </form>
             </div>
         </dialog>
+
+        <!-- Modal visualizza thread -->
+        <dialog id="my_modal_4" class="modal">
+            <div class="modal-box">
+                <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                </form>
+                <h3 class="text-lg font-bold mb-2">Visualizza thread</h3>
+                <div>
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Titolo</legend>
+                        <input type="text" id="thread-title" class="input" readonly />
+                    </fieldset>
+
+                    <fieldset class="fieldset mb-2">
+                        <legend class="fieldset-legend">Descrizione</legend>
+                        <input type="text" id="thread-description" class="input" readonly />
+                    </fieldset>
+
+                    <fieldset class="fieldset mb-2">
+                        <legend class="fieldset-legend">Proprietario</legend>
+                        <p id="thread-owner" class="text-sm"></p>
+                    </fieldset>
+
+                    <button id="modify-btn" class="btn btn-soft btn-warning" onclick="toggleEdit()">Modifica Thread</button>
+                    <button class="btn btn-soft btn-error" onclick="deleteThread(currentIdThread)">Elimina Thread</button>
+                </div>
+            </div>
+        </dialog>
         
         <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">Ultimi threads caricati (<%= resAllThreads.length %>)</li>
         <%  %>
@@ -41,10 +71,131 @@
             <p class="list-col-wrap text-xs">
             <%= resAllThreads[i].short_desc %>
             </p>
-            <button class="btn btn-square btn-ghost">
-            <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g stroke-linejoin="round" stroke-linecap="round" stroke-width="2" fill="none" stroke="currentColor"><path d="M6 3L20 12 6 21 6 3z"></path></g></svg>
+            <button onclick="loadThreadData(<%= resAllThreads[i].idThread %>)" class="btn btn-square btn-ghost" aria-label="Visualizza thread">
+                <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2" fill="none" stroke="currentColor">
+                        <path d="M6 3L20 12 6 21 6 3z"></path>
+                    </g>
+                </svg>
             </button>
         </li>
         <% } %>
     </ul>
 </div>
+
+<script>
+let currentIdThread = null;
+let isEditing = false;
+
+async function loadThreadData(idThread) {
+    try {
+        const response = await fetch('/loadThread', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ idThread })
+        });
+        if (!response.ok) throw new Error('Errore nel caricamento del thread');
+        const thread = await response.json();
+        if (thread.length > 0) {
+            document.getElementById('thread-title').value = thread[0].title;
+            document.getElementById('thread-description').value = thread[0].description;
+            document.getElementById('thread-owner').textContent = thread[0].owner;
+            currentIdThread = idThread;
+            isEditing = false;
+            document.getElementById('thread-title').readOnly = true;
+            document.getElementById('thread-description').readOnly = true;
+            document.getElementById('modify-btn').textContent = 'Modifica Thread';
+            my_modal_4.showModal();
+        }
+    } catch (error) {
+        console.error(error);
+        alert('Errore nel caricamento del thread');
+    }
+}
+
+function toggleEdit() {
+    isEditing = !isEditing;
+    const titleInput = document.getElementById('thread-title');
+    const descInput = document.getElementById('thread-description');
+    const btn = document.getElementById('modify-btn');
+    
+    if (isEditing) {
+        titleInput.readOnly = false;
+        descInput.readOnly = false;
+        btn.textContent = 'Conferma';
+    } else {
+        confirmUpdate();
+    }
+}
+
+async function confirmUpdate() {
+    if (!currentIdThread) return;
+    const title = document.getElementById('thread-title').value;
+    const description = document.getElementById('thread-description').value;
+    
+    try {
+        const response = await fetch('/updateThread', {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ idThread: currentIdThread, title, description })
+        });
+        if (!response.ok) throw new Error('Errore nell\'aggiornamento');
+        isEditing = false;
+        document.getElementById('thread-title').readOnly = true;
+        document.getElementById('thread-description').readOnly = true;
+        document.getElementById('modify-btn').textContent = 'Modifica Thread';
+        window.location.reload();
+    } catch (error) {
+        console.error(error);
+        alert('Errore nell\'aggiornamento del thread');
+    }
+}
+
+async function sendUpdateData(idThread, title, description) {
+    try {
+        const response = await fetch('/updateThread', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ idThread, title, description })
+        });
+
+        if (!response.ok) throw new Error('Errore nella modifica del thread');
+        const thread = await response.json();
+
+        if (!thread) alert('Non puoi modificare questo thread!');
+        window.location.reload();
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+async function deleteThread(idThread) {
+    try {
+        const response = await fetch('/deleteThread', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ idThread })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            alert(result.error || 'Errore nell\'eliminazione');
+            return;
+        }
+
+        window.location.reload();
+    } catch (e) {
+        console.error(e);
+        alert('Errore di rete');
+    }
+}
+</script>

@@ -5,7 +5,7 @@ import expressLayouts from 'express-ejs-layouts';
 import multer from 'multer';
 import fs from 'fs';
 import session from 'express-session';
-import { allThreads, newThreads, personalThreads } from './public/js/home.js';
+import { allThreads, newThreads, personalThreads, loadThread, updateThreads, deleteThreads } from './public/js/home.js';
 import { getAllData, login, register } from './public/js/users.js';
 import { parseINIString } from './public/js/utilities.js';
 
@@ -124,11 +124,52 @@ app.post('/createThread', isAuthenticated, async (req, res) => {
     }
 });
 
+// Carica un thread
+app.post('/loadThread', isAuthenticated, async (req, res) => {
+    const idThread = req.body.idThread;
+    
+    try {
+        const thread = await loadThread(idThread);
+        res.json(thread);
+    } catch (e) {
+        console.error(e.message);
+        res.status(500).send("Errore DB");
+    }
+})
+
 // Aggiorna un thread
-//app.patch('/')
+app.patch('/updateThread', isAuthenticated, async (req, res) => {
+    const idThread = req.body.idThread;
+    const idUser = req.session.idUser;
+    const title = req.body.title;
+    const description = req.body.description;
+
+    try {
+        const thread = await updateThreads(idThread, idUser, title, description);
+        res.json(thread);
+    } catch (e) {
+        console.error(e.message);
+        res.status(500).send("Errore DB");
+    }
+})
 
 // Elimina un thread
-//app.delete('/')
+app.delete('/deleteThread', isAuthenticated, async (req, res) => {
+    const idThread = req.body.idThread;
+    const idUser = req.session.idUser;
+
+    try {
+        await deleteThreads(idThread, idUser);
+        res.json({ success: true });
+    } catch (e) {
+        if (e.message === 'Unauthorized to delete this thread') {
+            res.status(403).json({ error: 'Non autorizzato a eliminare questo thread' });
+        } else {
+            console.error(e.message);
+            res.status(500).json({ error: 'Errore DB' });
+        }
+    }
+});
 
 app.listen(3000);
 
