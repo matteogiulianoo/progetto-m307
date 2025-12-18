@@ -197,11 +197,10 @@ app.delete('/deleteThread', isAuthenticated, async (req, res) => {
     }
 });
 
-app.listen(3000);
-
-
-
-
+// Se viene inserita una rotta non conosciuta
+app.use((req, res) => {
+    res.render('errors/404', { layout: false });
+});
 
 // Protezione CALL
 function isAuthenticated (req, res, next) {
@@ -211,3 +210,5 @@ function isAuthenticated (req, res, next) {
         next()
     }
 }
+
+app.listen(3000);
