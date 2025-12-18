@@ -93,18 +93,16 @@ export async function getAllData(idCurrentUser) {
  * @param {*} password 
  */
 export async function login(email, password) {
-    if (email == '' || password == '') return;
-    if (validateEmail(email)) {
-        const pswd = protect(password);
-        return await sql("SELECT idUser FROM users WHERE email = ? AND pswd = ?", [email, pswd])
-            .then(res => {
-                return res;
-            })
-            .catch(e => {
-                console.error(e);
-                throw e;
-        });
-    }
+    if (!email || !password) return null;
+    if (!validateEmail(email)) return null;
+
+    const resEmail = await sql("SELECT idUser, pswd, email FROM users WHERE email = ?", [email]);
+    if (!resEmail || resEmail == 0) return null;
+
+    const match = await bcrypt.compare(password, resEmail[0].pswd);
+    if (!match) return null;
+
+    return resEmail[0];
 }
 
 /**
@@ -117,18 +115,18 @@ export async function login(email, password) {
  * @param {*} state 
  */
 export async function register(name, surname, email, password, canton, state) {
-    if (name == '' || surname == '' || email == '' || password == '' || canton == '' || state == '') return;
-    if (validateEmail(email)) {
-        const pswd = protect(password);
-        return await sql("INSERT INTO users (name, surname, email, password, canton, state) VALUE (?,?,?,?,?,?)", [name, surname, email, pswd, canton, state])
-            .then(res => {
-                return res;
-            })
-            .catch(e => {
-                console.error(e);
-                throw e;
-        });
-    }
+    if (!name || !surname || !email || !password || !canton || !state) return null;
+    if (!validateEmail(email)) return null;
+    
+    const pswd = await protect(password);
+    return await sql("INSERT INTO users (name, surname, email, pswd, canton, state) VALUE (?,?,?,?,?,?)", [name, surname, email, pswd, canton, state])
+        .then(res => {
+            return res;
+        })
+        .catch(e => {
+            console.error(e);
+            throw e;
+    });
 }
 
 /**

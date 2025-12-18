@@ -1,0 +1,38 @@
+<div class="hero bg-base-200 min-h-screen">
+    <div class="hero-content flex-col lg:flex-row-reverse">
+        <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+            <div class="card-body">
+                <fieldset class="fieldset">
+                    <form action="/register" method="post">
+                        <label class="label">Nome</label>
+                        <input type="text" name="nome" class="input" placeholder="Nome" />
+                        <label class="label">Cognome</label>
+                        <input type="text" name="cognome" class="input" placeholder="Cognome" />
+                        <label class="label">Email</label>
+                        <input type="email" name="email" class="input" placeholder="Email" />
+                        <label class="label">Password</label>
+                        <input type="password" name="pswd" class="input" placeholder="Password" />
+                        <label class="label">Nazione</label>
+                        <select class="select" name="nazione">
+                            <option disabled selected>Nazione</option>
+                            <option>Svizzera</option>
+                            <option>Italia</option>
+                            <option>Straniera</option>
+                        </select>
+                        <label class="label">Cantone/Regione</label>
+                        <select class="select" name="cantone">
+                            <option disabled selected>Cantone/Regione</option>
+                            <option>Ticino</option>
+                            <option>Grigioni</option>
+                            <option>Lombardia</option>
+                            <option>Lazio</option>
+                            <option>Altro</option>
+                        </select>
+                        <div><a class="link link-hover" href="/login">Hai già un account?</a></div>
+                        <button class="btn btn-neutral mt-4" type="submit">Register</button>
+                    </form>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>

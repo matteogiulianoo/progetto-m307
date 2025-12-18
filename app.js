@@ -6,7 +6,7 @@ import multer from 'multer';
 import fs from 'fs';
 import session from 'express-session';
 import { allThreads, newThreads } from './public/js/home.js';
-import { getAllData } from './public/js/users.js';
+import { getAllData, login, register } from './public/js/users.js';
 import { parseINIString } from './public/js/utilities.js';
 
 // dirname = nome directory
@@ -36,7 +36,7 @@ app.use(session({
 
 // Variabile isLoggedIn
 app.use((req, res, next) => {
-    res.locals.isLoggedIn = !!req.session.user;
+    res.locals.isLoggedIn = !!req.session.email;
     next();
 });
 
@@ -57,17 +57,48 @@ app.get('/', isAuthenticated, async (req, res) => {
     }
 });
 
+// Carica la pagina di registrazione
+app.get('/register', async (req, res) => {
+    res.render('register', { layout: false });
+});
+
+app.post('/register', async (req, res) => {
+    const nome = req.body.nome;
+    const cognome = req.body.cognome;
+    const email = req.body.email;
+    const pswd = req.body.pswd;
+    const nazione = req.body.nazione;
+    const cantone = req.body.cantone;
+
+    try {
+        const reg = await register(nome, cognome, email, pswd, cantone, nazione);
+        if (!reg) return res.redirect('/register'); 
+        res.redirect('/login');
+    } catch (err) {
+        console.error(err);
+        res.redirect('/register');
+    }
+});
+
 // Carica la pagina di login
 app.get('/login', async (req, res) => {
-    // TODO
-    // 1. Check nel Database (const login ...)
+    res.render('login', { layout: false });
+});
 
-    if (!login) res.redirect('/login');
-
-    req.session.id = login[0];
-    req.session.save(() => {
-        res.redirect("/")
-    });
+app.post('/login', async (req, res) => {
+    const email = req.body.email;
+    const pswd = req.body.pswd;
+    
+    try {
+        const log = await login(email, pswd);
+        if (!log || log.length == 0) return res.redirect('/login');
+        req.session.idUser = log.idUser;
+        req.session.email = log.email;
+        req.session.save(() => { res.redirect('/') });
+    } catch (err) {
+        console.error(err);
+        res.redirect('/login');
+    }
 });
 
 // Logout
@@ -111,8 +142,8 @@ app.listen(3000);
 
 // Protezione CALL
 function isAuthenticated (req, res, next) {
-    if (req.session.user == null) {
-        res.redirect('/login')
+    if (req.session.email == null) {
+        res.redirect('/login');
     } else {
         next()
     }
