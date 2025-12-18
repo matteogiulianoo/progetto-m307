@@ -1,4 +1,5 @@
 <div class="card bg-base-200 rounded-box grid h-250 m-4 grow place-items-center">
+    <% if (isLoggedIn) { %>
     <div class="user-info flex flex-col text-center place-items-center w-full">
         <div class="avatar mb-4">
             <div class="ring-primary ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
@@ -28,4 +29,5 @@
             <% } %>
         </ul>
     </div>
+    <% } %>
 </div>

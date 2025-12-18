@@ -60,8 +60,14 @@ app.get('/', isAuthenticated, async (req, res) => {
 // Carica la pagina di login
 app.get('/login', async (req, res) => {
     // TODO
-    // 1. Check nel Database
-    // 2. Se positivo il check crea una sessione
+    // 1. Check nel Database (const login ...)
+
+    if (!login) res.redirect('/login');
+
+    req.session.id = login[0];
+    req.session.save(() => {
+        res.redirect("/")
+    });
 });
 
 // Logout

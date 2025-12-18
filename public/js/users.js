@@ -80,3 +80,28 @@ export async function getAllData(idCurrentUser) {
     const res = data && data.length > 0 ? data : null;
     return res;
 }
+
+// -----------------------------------------------------------------
+// LOGIN & REGISTER QUERY
+// -----------------------------------------------------------------
+/**
+ * Questa funzione serve per eseguire l'accesso nel sistema
+ * @param {*} email 
+ * @param {*} password 
+ */
+export async function login(email, password) {
+
+}
+
+/**
+ * Questa funzione serve per registrare un nuovo utente nel database
+ * @param {*} name 
+ * @param {*} surname 
+ * @param {*} email 
+ * @param {*} password 
+ * @param {*} canton 
+ * @param {*} state 
+ */
+export async function register(name, surname, email, password, canton, state) {
+
+}

@@ -19,6 +19,7 @@
   "homepage": "https://github.com/matteogiulianoo/progetto-m307#readme",
   "description": "",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "ejs": "^3.1.10",
     "express": "^5.2.1",
     "express-ejs-layouts": "^2.5.1",
