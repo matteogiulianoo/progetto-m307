@@ -2,5 +2,4 @@
 - Aggiungere il bottone: aggiungi commento (tabella commenti che ha come foreign key un idThread)
 - Fare la pagina supporto con il contact form
 - Fare 500 (quando il server restituisce un errore)
-- fare 404 (metterlo tra function e listen in fondo ad app.js)
 - Friends System
