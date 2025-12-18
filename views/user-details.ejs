@@ -6,6 +6,7 @@
                 <img src="<%= allData.photoPath[0].photo_path %>" />
             </div>
         </div>
+        <div class="badge badge-outline badge-warning mb-4">⭐️ <%= starsCount[0].stars %></div>
         <% if (allData.role && allData.role[0].namePermission == "Developer") { %>
             <div class="badge badge-success mb-2 font-semibold">
                 <%= allData.role[0].namePermission %>

@@ -1,2 +1,7 @@
-- Caricamento immagini
 - Fixare search che al momento non va (non cerca e non è abbinata a Command+K)
+- Aggiungere il bottone: aggiungi commento (tabella commenti che ha come foreign key un idThread)
+- Fare la pagina supporto con il contact form
+- Fare 404 (quando si inserisce una route non giusta)
+- Fare 500 (quando il server restituisce un errore)
+- Friends System
+- Stars System

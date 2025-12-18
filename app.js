@@ -8,6 +8,7 @@ import session from 'express-session';
 import { allThreads, newThreads, personalThreads, loadThread, updateThreads, deleteThreads } from './public/js/home.js';
 import { getAllData, login, register } from './public/js/users.js';
 import { parseINIString } from './public/js/utilities.js';
+import { getStars, addStars, removeStars, initStars } from './public/js/stars.js';
 
 // dirname = nome directory
 const __dirname = import.meta.dirname;
@@ -58,7 +59,13 @@ app.get('/', isAuthenticated, async (req, res) => {
         const resAllThreads = await allThreads();
         const pThreads = await personalThreads(req.session.idUser);
         const allData = await getAllData(req.session.idUser);
-        res.render('home', { resAllThreads, allData, pThreads });
+        const checkStarInit = await getStars(req.session.idUser);
+
+        if (checkStarInit.length == 0 || !checkStarInit) await initStars(req.session.idUser);
+
+        const starsCount = await getStars(req.session.idUser);
+
+        res.render('home', { resAllThreads, allData, pThreads, starsCount });
     } catch (e) {
         console.error(e.message);
         res.status(500).send("Errore DB");
@@ -134,6 +141,8 @@ app.post('/createThread', isAuthenticated, async (req, res) => {
     try {
         const status = await newThreads(req.session.idUser, title, desc);
         if (!status) return;
+        const add = await addStars(req.session.idUser, 10);
+        if (!add) return;
         res.redirect('/');
     } catch (e) {
         console.error(e.message);
