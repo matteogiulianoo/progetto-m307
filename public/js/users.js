@@ -1,4 +1,7 @@
 import { sql } from '../../database/db-utilities.js';
+import bcrypt from 'bcrypt';
+
+const saltRounds = 10;
 
 // -----------------------------------------------------------------
 // SELECT QUERY
@@ -90,7 +93,18 @@ export async function getAllData(idCurrentUser) {
  * @param {*} password 
  */
 export async function login(email, password) {
-
+    if (email == '' || password == '') return;
+    if (validateEmail(email)) {
+        const pswd = protect(password);
+        return await sql("SELECT idUser FROM users WHERE email = ? AND pswd = ?", [email, pswd])
+            .then(res => {
+                return res;
+            })
+            .catch(e => {
+                console.error(e);
+                throw e;
+        });
+    }
 }
 
 /**
@@ -103,5 +117,33 @@ export async function login(email, password) {
  * @param {*} state 
  */
 export async function register(name, surname, email, password, canton, state) {
+    if (name == '' || surname == '' || email == '' || password == '' || canton == '' || state == '') return;
+    if (validateEmail(email)) {
+        const pswd = protect(password);
+        return await sql("INSERT INTO users (name, surname, email, password, canton, state) VALUE (?,?,?,?,?,?)", [name, surname, email, pswd, canton, state])
+            .then(res => {
+                return res;
+            })
+            .catch(e => {
+                console.error(e);
+                throw e;
+        });
+    }
+}
 
+/**
+ * Variabile (lambda) per controllare se l'e-mail inserita è valida
+ */
+const validateEmail = (email) => {
+  return email.match(
+    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  );
+};
+
+/**
+ * Funzione per crittografare un testo
+ */
+async function protect(text) {
+    const salt = bcrypt.genSaltSync(saltRounds);
+    return bcrypt.hashSync(text, salt);
 }
