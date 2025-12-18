@@ -111,13 +111,13 @@ app.get('/logout', isAuthenticated, async (req, res) => {
 
 // Crea un thread
 app.post('/createThread', isAuthenticated, async (req, res) => {
-    const currentUser = req.body.idUser;
     const title = req.body.title;
     const desc = req.body.description;
 
     try {
-        const status = await newThreads(currentUser, title, desc);
-        // ... write code
+        const status = await newThreads(req.session.idUser, title, desc);
+        if (!status) return;
+        res.redirect('/');
     } catch (e) {
         console.error(e.message);
         res.status(500).send("Errore DB");
