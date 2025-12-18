@@ -3,7 +3,7 @@
     <div class="user-info flex flex-col text-center place-items-center w-full">
         <div class="avatar mb-4">
             <div class="ring-primary ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
-                <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
+                <img src="<%= allData.photoPath[0].photo_path %>" />
             </div>
         </div>
         <% if (allData.role && allData.role[0].namePermission == "Developer") { %>
@@ -31,7 +31,7 @@
             <% } %>
             <% for (var i = 0; i < pThreads.length; i++) { %>
             <li class="list-row mb-4 bg-base-100 shadow-md">
-                <div><img class="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/1@94.webp"/></div>
+                <div><img class="size-10 rounded-box" src="<%= pThreads[i].owner_photo%>"/></div>
                 <div>
                 <div><%= pThreads[i].owner %></div>
                 <div class="text-xs uppercase font-semibold opacity-60"><%= pThreads[i].title %></div>

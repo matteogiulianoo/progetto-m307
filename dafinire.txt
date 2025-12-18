@@ -1,2 +1,2 @@
 - Caricamento immagini
-- Profilo fa animazione a destra a sinistra e rimane centrale con la possibilità di cambiare (si sposta da destra a centro, sparisce il testo e appaiono i campi già compilati che si possono modificare)
+- Fixare search che al momento non va (non cerca e non è abbinata a Command+K)

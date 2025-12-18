@@ -67,6 +67,21 @@ export async function getRole(idCurrentUser) {
 }
 
 /**
+ * Recupera il Path della foto profilo dell'utente connesso
+ * @param {*} idCurrentUser 
+ */
+export async function getPhotoPath(idCurrentUser) {
+    return await sql("SELECT photo_path FROM users WHERE idUser = ?", [idCurrentUser])
+        .then(res => {
+            return res;
+        })
+        .catch(e => {
+            console.error(e);
+            throw e;
+    });
+}
+
+/**
  * Restituisce tutti i dati dell'utente connesso
  * @param {*} idCurrentUser 
  */
@@ -75,13 +90,15 @@ export async function getAllData(idCurrentUser) {
     const canton = await getCanton(idCurrentUser);
     const state = await getState(idCurrentUser);
     const role = await getRole(idCurrentUser);
+    const photoPath = await getPhotoPath(idCurrentUser);
 
     var data = 
         {
             fullName: fullName, 
             canton: canton, 
             state: state, 
-            role: role
+            role: role,
+            photoPath: photoPath
         };
 
     const res = data != null ? data : null;
@@ -117,13 +134,14 @@ export async function login(email, password) {
  * @param {*} password 
  * @param {*} canton 
  * @param {*} state 
+ * @param {*} profilePhotoPath
  */
-export async function register(name, surname, email, password, canton, state) {
+export async function register(name, surname, email, password, canton, state, profilePhotoPath) {
     if (!name || !surname || !email || !password || !canton || !state) return null;
     if (!validateEmail(email)) return null;
     
     const pswd = await protect(password);
-    return await sql("INSERT INTO users (name, surname, email, pswd, canton, state) VALUE (?,?,?,?,?,?)", [name, surname, email, pswd, canton, state])
+    return await sql("INSERT INTO users (name, surname, email, pswd, canton, state, photo_path) VALUE (?,?,?,?,?,?,?)", [name, surname, email, pswd, canton, state, profilePhotoPath])
         .then(res => {
             return res;
         })

@@ -3,23 +3,25 @@
         <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
             <div class="card-body">
                 <fieldset class="fieldset">
-                    <form action="/register" method="post">
-                        <label class="label">Nome</label>
+                    <form action="/register" method="post" enctype="multipart/form-data">
+                        <label class="label">Foto Profilo</label>
+                        <input name="profilePhoto" class="cursor-pointer bg-neutral-secondary-medium border border-default-medium text-heading text-lg rounded-base focus:ring-brand focus:border-brand block w-full shadow-xs placeholder:text-body" id="large_size" type="file">  
+                        <label class="label mb-2">Nome</label>
                         <input type="text" name="nome" class="input" placeholder="Nome" />
-                        <label class="label">Cognome</label>
+                        <label class="label mt-4 mb-2">Cognome</label>
                         <input type="text" name="cognome" class="input" placeholder="Cognome" />
-                        <label class="label">Email</label>
+                        <label class="label mt-4 mb-2">Email</label>
                         <input type="email" name="email" class="input" placeholder="Email" />
-                        <label class="label">Password</label>
+                        <label class="label mt-4 mb-2">Password</label>
                         <input type="password" name="pswd" class="input" placeholder="Password" />
-                        <label class="label">Nazione</label>
+                        <label class="label mt-4 mb-2">Nazione</label>
                         <select class="select" name="nazione">
                             <option disabled selected>Nazione</option>
                             <option>Svizzera</option>
                             <option>Italia</option>
                             <option>Straniera</option>
                         </select>
-                        <label class="label">Cantone/Regione</label>
+                        <label class="label mt-4 mb-2">Cantone/Regione</label>
                         <select class="select" name="cantone">
                             <option disabled selected>Cantone/Regione</option>
                             <option>Ticino</option>
@@ -28,8 +30,8 @@
                             <option>Lazio</option>
                             <option>Altro</option>
                         </select>
-                        <div><a class="link link-hover" href="/login">Hai già un account?</a></div>
-                        <button class="btn btn-neutral mt-4" type="submit">Register</button>
+                        <div class="mt-4"><a class="link link-hover" href="/login">Hai già un account?</a></div>
+                        <button class="btn btn-neutral mt-4" type="submit">Registrati</button>
                     </form>
                 </fieldset>
             </div>

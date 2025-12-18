@@ -63,7 +63,7 @@
         <%  %>
         <% for (var i = 0; i < resAllThreads.length; i++) { %>
         <li class="list-row">
-            <div><img class="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/1@94.webp"/></div>
+            <div><img class="size-10 rounded-box" src="<%= resAllThreads[i].owner_photo %>"/></div>
             <div>
             <div><%= resAllThreads[i].owner %></div>
             <div class="text-xs uppercase font-semibold opacity-60"><%= resAllThreads[i].title %></div>

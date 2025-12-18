@@ -22,6 +22,18 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Creo uno storage per configurare multer (salvataggio file foto profilo)
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/images/profiles');
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({ storage: storage });
+
 // Gestore sessioni utente + recupero secret key
 const secretKey = fs.readFileSync(__dirname + '/config/data.dat', 'utf-8');
 const js_iniSecretKey = parseINIString(secretKey);
@@ -58,7 +70,9 @@ app.get('/register', async (req, res) => {
     res.render('register', { layout: false });
 });
 
-app.post('/register', async (req, res) => {
+// In questo blocco di codice, le seguenti righe sono state generate con l'aiuto dell'AI:
+// upload.single('profilePhoto') & const profilePhotoPath = req.file ? `/images/profiles/${req.file.filename}` : null;
+app.post('/register', upload.single('profilePhoto'), async (req, res) => {
     const nome = req.body.nome;
     const cognome = req.body.cognome;
     const email = req.body.email;
@@ -66,8 +80,11 @@ app.post('/register', async (req, res) => {
     const nazione = req.body.nazione;
     const cantone = req.body.cantone;
 
+    const profilePhotoPath = req.file ? `/images/profiles/${req.file.filename}` : null;
+    console.log(profilePhotoPath);
+
     try {
-        const reg = await register(nome, cognome, email, pswd, cantone, nazione);
+        const reg = await register(nome, cognome, email, pswd, cantone, nazione, profilePhotoPath);
         if (!reg) return res.redirect('/register'); 
         res.redirect('/login');
     } catch (err) {
