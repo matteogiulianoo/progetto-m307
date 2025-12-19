@@ -2,8 +2,9 @@ import express from 'express';
 
 // Funzioni custom
 import { isAuthenticated } from '../app.js';
-import { newThreads, loadThread, updateThreads, deleteThreads } from '../public/js/home.js';
+import { newThreads, loadThread, updateThreads, deleteThreads, allFavThreads } from '../public/js/home.js';
 import { addStars, removeStars } from '../public/js/stars.js';
+import { add } from '../public/js/favorites.js';
 
 const __dirname = import.meta.dirname;
 const router = express.Router();
@@ -26,6 +27,26 @@ router.post('/createThread', isAuthenticated, async (req, res) => {
         res.redirect('/');
     } catch (e) {
         console.error(e.message);
+        res.status(500).send("Errore DB");
+    }
+});
+
+/**
+ * Aggiunge all'utente collegato in sessione, il thread all'interno dei suoi favoriti
+ */
+router.post('/addFavourite', isAuthenticated, async (req, res) => {
+    const idUser = req.session.idUser;
+    const idThread = req.body.idThread;
+
+    try {
+        const addFThread = await add(idUser, idThread);
+        if (!addFThread) return;
+        //res.redirect('/');
+        const resAllThreads = await allFavThreads(idUser);
+        if (!resAllThreads) return;
+        res.json(addFThread);
+    } catch(e) {
+        console.error(e.message)
         res.status(500).send("Errore DB");
     }
 });

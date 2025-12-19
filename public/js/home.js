@@ -99,6 +99,10 @@ export async function allThreads() {
     });
 }
 
+export async function allFavThreads(idUser) {
+    return await sql("SELECT u.name AS owner, u.photo_path AS owner_photo, t.idThread, t.title, CASE WHEN CHAR_LENGTH(t.description) > 100 THEN CONCAT(LEFT(t.description, 100), '...') ELSE t.description END AS short_desc FROM threads  LIMIT 3")
+}
+
 /**
  * Questa funzione restituisce un'unico thread
  * @param {*} idThread 

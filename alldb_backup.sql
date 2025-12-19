@@ -23,7 +23,7 @@ SET @@SESSION.SQL_LOG_BIN= 0;
 -- GTID state at the beginning of the backup 
 --
 
-SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ '458723b6-db45-11f0-9216-72f86e939271:1-54';
+SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ '458723b6-db45-11f0-9216-72f86e939271:1-78';
 
 --
 -- Current Database: `mysql`
@@ -361,7 +361,7 @@ UNLOCK TABLES;
 --
 
 /*!40000 ALTER TABLE `innodb_index_stats` DISABLE KEYS */;
-INSERT IGNORE INTO `innodb_index_stats` VALUES ('mysql','component','PRIMARY','2025-12-17 12:38:22','n_diff_pfx01',0,1,'component_id'),('mysql','component','PRIMARY','2025-12-17 12:38:22','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('mysql','component','PRIMARY','2025-12-17 12:38:22','size',1,NULL,'Number of pages in the index'),('sys','sys_config','PRIMARY','2025-12-17 12:38:22','n_diff_pfx01',6,1,'variable'),('sys','sys_config','PRIMARY','2025-12-17 12:38:22','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('sys','sys_config','PRIMARY','2025-12-17 12:38:22','size',1,NULL,'Number of pages in the index'),('wespeak','commenti','PRIMARY','2025-12-18 13:48:32','n_diff_pfx01',0,1,'idCommento'),('wespeak','commenti','PRIMARY','2025-12-18 13:48:32','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','commenti','PRIMARY','2025-12-18 13:48:32','size',1,NULL,'Number of pages in the index'),('wespeak','commenti','idThread','2025-12-18 13:48:32','n_diff_pfx01',0,1,'idThread'),('wespeak','commenti','idThread','2025-12-18 13:48:32','n_diff_pfx02',0,1,'idThread,idCommento'),('wespeak','commenti','idThread','2025-12-18 13:48:32','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','commenti','idThread','2025-12-18 13:48:32','size',1,NULL,'Number of pages in the index'),('wespeak','commenti','owner','2025-12-18 13:48:32','n_diff_pfx01',0,1,'owner'),('wespeak','commenti','owner','2025-12-18 13:48:32','n_diff_pfx02',0,1,'owner,idCommento'),('wespeak','commenti','owner','2025-12-18 13:48:32','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','commenti','owner','2025-12-18 13:48:32','size',1,NULL,'Number of pages in the index'),('wespeak','friends','PRIMARY','2025-12-18 13:49:57','n_diff_pfx01',0,1,'idFriend'),('wespeak','friends','PRIMARY','2025-12-18 13:49:57','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','friends','PRIMARY','2025-12-18 13:49:57','size',1,NULL,'Number of pages in the index'),('wespeak','permissions','PRIMARY','2025-12-17 13:35:07','n_diff_pfx01',3,1,'idPermission'),('wespeak','permissions','PRIMARY','2025-12-17 13:35:07','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','permissions','PRIMARY','2025-12-17 13:35:07','size',1,NULL,'Number of pages in the index'),('wespeak','stars','PRIMARY','2025-12-18 15:06:10','n_diff_pfx01',5,1,'idStar'),('wespeak','stars','PRIMARY','2025-12-18 15:06:10','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','stars','PRIMARY','2025-12-18 15:06:10','size',1,NULL,'Number of pages in the index'),('wespeak','stars','idUser','2025-12-18 15:06:10','n_diff_pfx01',5,1,'idUser'),('wespeak','stars','idUser','2025-12-18 15:06:10','n_diff_pfx02',5,1,'idUser,idStar'),('wespeak','stars','idUser','2025-12-18 15:06:10','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','stars','idUser','2025-12-18 15:06:10','size',1,NULL,'Number of pages in the index'),('wespeak','threads','PRIMARY','2025-12-18 15:05:49','n_diff_pfx01',2,1,'idThread'),('wespeak','threads','PRIMARY','2025-12-18 15:05:49','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','threads','PRIMARY','2025-12-18 15:05:49','size',1,NULL,'Number of pages in the index'),('wespeak','threads','owner','2025-12-18 15:05:49','n_diff_pfx01',2,1,'owner'),('wespeak','threads','owner','2025-12-18 15:05:49','n_diff_pfx02',2,1,'owner,idThread'),('wespeak','threads','owner','2025-12-18 15:05:49','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','threads','owner','2025-12-18 15:05:49','size',1,NULL,'Number of pages in the index'),('wespeak','users','PRIMARY','2025-12-18 13:20:52','n_diff_pfx01',4,1,'idUser'),('wespeak','users','PRIMARY','2025-12-18 13:20:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','users','PRIMARY','2025-12-18 13:20:52','size',1,NULL,'Number of pages in the index'),('wespeak','users','idPermission','2025-12-18 13:20:52','n_diff_pfx01',2,1,'idPermission'),('wespeak','users','idPermission','2025-12-18 13:20:52','n_diff_pfx02',4,1,'idPermission,idUser'),('wespeak','users','idPermission','2025-12-18 13:20:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','users','idPermission','2025-12-18 13:20:52','size',1,NULL,'Number of pages in the index');
+INSERT IGNORE INTO `innodb_index_stats` VALUES ('mysql','component','PRIMARY','2025-12-17 12:38:22','n_diff_pfx01',0,1,'component_id'),('mysql','component','PRIMARY','2025-12-17 12:38:22','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('mysql','component','PRIMARY','2025-12-17 12:38:22','size',1,NULL,'Number of pages in the index'),('sys','sys_config','PRIMARY','2025-12-17 12:38:22','n_diff_pfx01',6,1,'variable'),('sys','sys_config','PRIMARY','2025-12-17 12:38:22','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('sys','sys_config','PRIMARY','2025-12-17 12:38:22','size',1,NULL,'Number of pages in the index'),('wespeak','commenti','PRIMARY','2025-12-18 13:48:32','n_diff_pfx01',0,1,'idCommento'),('wespeak','commenti','PRIMARY','2025-12-18 13:48:32','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','commenti','PRIMARY','2025-12-18 13:48:32','size',1,NULL,'Number of pages in the index'),('wespeak','commenti','idThread','2025-12-18 13:48:32','n_diff_pfx01',0,1,'idThread'),('wespeak','commenti','idThread','2025-12-18 13:48:32','n_diff_pfx02',0,1,'idThread,idCommento'),('wespeak','commenti','idThread','2025-12-18 13:48:32','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','commenti','idThread','2025-12-18 13:48:32','size',1,NULL,'Number of pages in the index'),('wespeak','commenti','owner','2025-12-18 13:48:32','n_diff_pfx01',0,1,'owner'),('wespeak','commenti','owner','2025-12-18 13:48:32','n_diff_pfx02',0,1,'owner,idCommento'),('wespeak','commenti','owner','2025-12-18 13:48:32','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','commenti','owner','2025-12-18 13:48:32','size',1,NULL,'Number of pages in the index'),('wespeak','favorites_threads','PRIMARY','2025-12-19 12:12:58','n_diff_pfx01',0,1,'idFavThread'),('wespeak','favorites_threads','PRIMARY','2025-12-19 12:12:58','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','favorites_threads','PRIMARY','2025-12-19 12:12:58','size',1,NULL,'Number of pages in the index'),('wespeak','favorites_threads','idThread','2025-12-19 12:12:58','n_diff_pfx01',0,1,'idThread'),('wespeak','favorites_threads','idThread','2025-12-19 12:12:58','n_diff_pfx02',0,1,'idThread,idFavThread'),('wespeak','favorites_threads','idThread','2025-12-19 12:12:58','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','favorites_threads','idThread','2025-12-19 12:12:58','size',1,NULL,'Number of pages in the index'),('wespeak','favorites_threads','idUser','2025-12-19 12:12:58','n_diff_pfx01',0,1,'idUser'),('wespeak','favorites_threads','idUser','2025-12-19 12:12:58','n_diff_pfx02',0,1,'idUser,idFavThread'),('wespeak','favorites_threads','idUser','2025-12-19 12:12:58','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','favorites_threads','idUser','2025-12-19 12:12:58','size',1,NULL,'Number of pages in the index'),('wespeak','friends','PRIMARY','2025-12-18 13:49:57','n_diff_pfx01',0,1,'idFriend'),('wespeak','friends','PRIMARY','2025-12-18 13:49:57','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','friends','PRIMARY','2025-12-18 13:49:57','size',1,NULL,'Number of pages in the index'),('wespeak','permissions','PRIMARY','2025-12-17 13:35:07','n_diff_pfx01',3,1,'idPermission'),('wespeak','permissions','PRIMARY','2025-12-17 13:35:07','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','permissions','PRIMARY','2025-12-17 13:35:07','size',1,NULL,'Number of pages in the index'),('wespeak','stars','PRIMARY','2025-12-19 12:24:30','n_diff_pfx01',7,1,'idStar'),('wespeak','stars','PRIMARY','2025-12-19 12:24:30','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','stars','PRIMARY','2025-12-19 12:24:30','size',1,NULL,'Number of pages in the index'),('wespeak','stars','idUser','2025-12-19 12:24:30','n_diff_pfx01',7,1,'idUser'),('wespeak','stars','idUser','2025-12-19 12:24:30','n_diff_pfx02',7,1,'idUser,idStar'),('wespeak','stars','idUser','2025-12-19 12:24:30','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','stars','idUser','2025-12-19 12:24:30','size',1,NULL,'Number of pages in the index'),('wespeak','threads','PRIMARY','2025-12-19 12:24:30','n_diff_pfx01',4,1,'idThread'),('wespeak','threads','PRIMARY','2025-12-19 12:24:30','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','threads','PRIMARY','2025-12-19 12:24:30','size',1,NULL,'Number of pages in the index'),('wespeak','threads','owner','2025-12-19 12:24:30','n_diff_pfx01',3,1,'owner'),('wespeak','threads','owner','2025-12-19 12:24:30','n_diff_pfx02',4,1,'owner,idThread'),('wespeak','threads','owner','2025-12-19 12:24:30','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','threads','owner','2025-12-19 12:24:30','size',1,NULL,'Number of pages in the index'),('wespeak','users','PRIMARY','2025-12-19 11:59:14','n_diff_pfx01',7,1,'idUser'),('wespeak','users','PRIMARY','2025-12-19 11:59:14','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','users','PRIMARY','2025-12-19 11:59:14','size',1,NULL,'Number of pages in the index'),('wespeak','users','idPermission','2025-12-19 11:59:14','n_diff_pfx01',3,1,'idPermission'),('wespeak','users','idPermission','2025-12-19 11:59:14','n_diff_pfx02',7,1,'idPermission,idUser'),('wespeak','users','idPermission','2025-12-19 11:59:14','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('wespeak','users','idPermission','2025-12-19 11:59:14','size',1,NULL,'Number of pages in the index');
 /*!40000 ALTER TABLE `innodb_index_stats` ENABLE KEYS */;
 
 --
@@ -369,7 +369,7 @@ INSERT IGNORE INTO `innodb_index_stats` VALUES ('mysql','component','PRIMARY','2
 --
 
 /*!40000 ALTER TABLE `innodb_table_stats` DISABLE KEYS */;
-INSERT IGNORE INTO `innodb_table_stats` VALUES ('mysql','component','2025-12-17 12:38:22',0,1,0),('sys','sys_config','2025-12-17 12:38:22',6,1,0),('wespeak','commenti','2025-12-18 13:48:32',0,1,2),('wespeak','friends','2025-12-18 13:49:57',0,1,0),('wespeak','permissions','2025-12-17 13:35:07',3,1,0),('wespeak','stars','2025-12-18 15:06:10',5,1,1),('wespeak','threads','2025-12-18 15:05:49',2,1,1),('wespeak','users','2025-12-18 13:20:52',4,1,1);
+INSERT IGNORE INTO `innodb_table_stats` VALUES ('mysql','component','2025-12-17 12:38:22',0,1,0),('sys','sys_config','2025-12-17 12:38:22',6,1,0),('wespeak','commenti','2025-12-18 13:48:32',0,1,2),('wespeak','favorites_threads','2025-12-19 12:12:58',0,1,2),('wespeak','friends','2025-12-18 13:49:57',0,1,0),('wespeak','permissions','2025-12-17 13:35:07',3,1,0),('wespeak','stars','2025-12-19 12:24:30',7,1,1),('wespeak','threads','2025-12-19 12:24:30',4,1,1),('wespeak','users','2025-12-19 11:59:14',7,1,1);
 /*!40000 ALTER TABLE `innodb_table_stats` ENABLE KEYS */;
 
 --
@@ -1113,6 +1113,34 @@ INSERT INTO `commenti` VALUES (1,'Benvenuto Luigi',5,'2025-12-18 14:43:41',11);
 UNLOCK TABLES;
 
 --
+-- Table structure for table `favorites_threads`
+--
+
+DROP TABLE IF EXISTS `favorites_threads`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `favorites_threads` (
+  `idFavThread` int NOT NULL AUTO_INCREMENT,
+  `idUser` int NOT NULL,
+  `idThread` int NOT NULL,
+  PRIMARY KEY (`idFavThread`),
+  KEY `idUser` (`idUser`),
+  KEY `idThread` (`idThread`),
+  CONSTRAINT `favorites_threads_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`idUser`),
+  CONSTRAINT `favorites_threads_ibfk_2` FOREIGN KEY (`idThread`) REFERENCES `threads` (`idThread`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `favorites_threads`
+--
+
+LOCK TABLES `favorites_threads` WRITE;
+/*!40000 ALTER TABLE `favorites_threads` DISABLE KEYS */;
+/*!40000 ALTER TABLE `favorites_threads` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `friends`
 --
 
@@ -1176,7 +1204,7 @@ CREATE TABLE `stars` (
   PRIMARY KEY (`idStar`),
   KEY `idUser` (`idUser`),
   CONSTRAINT `stars_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1185,7 +1213,7 @@ CREATE TABLE `stars` (
 
 LOCK TABLES `stars` WRITE;
 /*!40000 ALTER TABLE `stars` DISABLE KEYS */;
-INSERT INTO `stars` VALUES (1,1,0),(2,2,0),(3,3,0),(4,4,20),(5,5,10);
+INSERT INTO `stars` VALUES (1,1,0),(2,2,0),(3,3,0),(4,4,-5),(5,5,10),(6,6,20),(7,7,10);
 /*!40000 ALTER TABLE `stars` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1206,7 +1234,7 @@ CREATE TABLE `threads` (
   PRIMARY KEY (`idThread`),
   KEY `owner` (`owner`),
   CONSTRAINT `threads_ibfk_1` FOREIGN KEY (`owner`) REFERENCES `users` (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1215,7 +1243,7 @@ CREATE TABLE `threads` (
 
 LOCK TABLES `threads` WRITE;
 /*!40000 ALTER TABLE `threads` DISABLE KEYS */;
-INSERT INTO `threads` VALUES (10,5,'Mi chiamo Pata','Piacere a tutti, mi chiamo Pata-Tine, ma per gli amici Pata.','2025-12-18 13:45:35',NULL),(11,4,'Mi chiamo Luigi','Ciao a tutti, piacere, io sono luigi.','2025-12-18 14:43:05','2025-12-18 15:05:49'),(12,4,'Secondo thread','Che belloooo! Questo è il mio secondo thread!','2025-12-18 15:06:10',NULL);
+INSERT INTO `threads` VALUES (10,5,'Mi chiamo Pata','Piacere a tutti, mi chiamo Pata-Tine, ma per gli amici Pata.','2025-12-18 13:45:35',NULL),(11,4,'Mi chiamo Luigi','Ciao a tutti, piacere, io sono luigi.','2025-12-18 14:43:05','2025-12-18 15:05:49'),(12,4,'Secondo thread','Che belloooo! Questo è il mio secondo thread!','2025-12-18 15:06:10',NULL),(16,7,'Piacer','Io sono Elia Salmina, un professore della CPT di Locarno','2025-12-19 12:00:20','2025-12-19 12:00:58');
 /*!40000 ALTER TABLE `threads` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1239,7 +1267,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`idUser`),
   KEY `idPermission` (`idPermission`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`idPermission`) REFERENCES `permissions` (`idPermission`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1248,7 +1276,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Matteo','Giuliano','matteo.giuliano@wespeak','matteo123',2,'','','https://dummyimage.com/150x150/0000ff/ffffff&text=U'),(2,'Matteo','Giuliani','matteo.giuliani@wespeak.com','$2b$10$tTtmZfTYy8lIXx22iaCm6OMAgP7pF5HQrecsl.gZgz9vK8J3GysXC',3,'Altro','Straniera','https://dummyimage.com/150x150/0000ff/ffffff&text=U'),(3,'Luca','Ambrosio','luca.ambrosio@wespeak.com','$2b$10$Y9LZI7j/Wg.pHX5p4jt3se/T8kX5NUXuhUW2iaPfzKdC3TxUA44YC',3,'Lazio','Italia','https://dummyimage.com/150x150/0000ff/ffffff&text=U'),(4,'Luigi','Fortunato','luigi.fortunato@wespeak.com','$2b$10$7pZZUdxbWYsTAsuU.HnpmOGrIVl5jFoA0iD.MB9f/wEdspETwNyDW',1,'Grigioni','Svizzera','/images/profiles/profilePhoto-1766063364417.jpg'),(5,'Pata','Tine','pata.tine@wespeak.com','$2b$10$rQL6OTH7Jr/9IFEg1yqBh.Gf.GztNlgb1mI06h0Y8nbB0I5KnWSrm',3,'Lazio','Italia','/images/profiles/profilePhoto-1766065378613.jpg');
+INSERT INTO `users` VALUES (1,'Matteo','Giuliano','matteo.giuliano@wespeak','matteo123',2,'','','https://dummyimage.com/150x150/0000ff/ffffff&text=U'),(2,'Matteo','Giuliani','matteo.giuliani@wespeak.com','$2b$10$tTtmZfTYy8lIXx22iaCm6OMAgP7pF5HQrecsl.gZgz9vK8J3GysXC',3,'Altro','Straniera','https://dummyimage.com/150x150/0000ff/ffffff&text=U'),(3,'Luca','Ambrosio','luca.ambrosio@wespeak.com','$2b$10$Y9LZI7j/Wg.pHX5p4jt3se/T8kX5NUXuhUW2iaPfzKdC3TxUA44YC',3,'Lazio','Italia','https://dummyimage.com/150x150/0000ff/ffffff&text=U'),(4,'Luigi','Fortunato','luigi.fortunato@wespeak.com','$2b$10$7pZZUdxbWYsTAsuU.HnpmOGrIVl5jFoA0iD.MB9f/wEdspETwNyDW',1,'Grigioni','Svizzera','/images/profiles/profilePhoto-1766063364417.jpg'),(5,'Pata','Tine','pata.tine@wespeak.com','$2b$10$rQL6OTH7Jr/9IFEg1yqBh.Gf.GztNlgb1mI06h0Y8nbB0I5KnWSrm',3,'Lazio','Italia','/images/profiles/profilePhoto-1766065378613.jpg'),(6,'Sandro','Pigni','sandro.pigni@wespeak.com','$2b$10$CXYgOpyILF3.F6duLTn0vuz47UYEbH7PIwQYZN26jjWS0QkCUpvL2',3,'Ticino','Svizzera','/images/profiles/profilePhoto-1766132437683.avif'),(7,'Elia','Salmina','elia.salmina@wespeak.com','$2b$10$uXN3rnnhMe/elKw1IxBFt.PJ6AQC9xA66VVGcVhCbCaG4YOlcFENC',3,'Lombardia','Italia','/images/profiles/profilePhoto-1766145554216.avif');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
@@ -1263,4 +1291,4 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-12-18 15:10:45
+-- Dump completed on 2025-12-19 14:07:28

@@ -10,6 +10,9 @@ import { getStars, initStars } from './public/js/stars.js';
 import { router as userRouter } from './routes/user_routes.js';
 import { router as threadRouter } from './routes/thread_routes.js';
 import { router as friendRouter } from './routes/friend_routes.js';
+import { router as userListRouter } from './routes/userlist_routes.js';
+import { router as staffListRouter } from './routes/stafflist_routes.js';
+
 
 // dirname = nome directory
 const __dirname = import.meta.dirname;
@@ -28,6 +31,8 @@ app.use(express.json());
 app.use("/", userRouter);
 app.use("/", threadRouter);
 app.use("/", friendRouter);
+app.use("/", userListRouter);
+app.use("/", staffListRouter);
 
 // Variabile isLoggedIn
 app.use((req, res, next) => {

@@ -1,4 +1,3 @@
 - Aggiungere il bottone: aggiungi commento (tabella commenti che ha come foreign key un idThread) (PENINDG)
-- Fare la pagina supporto con il contact form (PENINDG)
 - Friends System (Logica OK | Impl. Mancanti)
 - Pagina Staff e Pagina Utenti (IN CORSO) - counter friends
