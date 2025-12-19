@@ -9,6 +9,7 @@ import { getStars, initStars } from './public/js/stars.js';
 
 import { router as userRouter } from './routes/user_routes.js';
 import { router as threadRouter } from './routes/thread_routes.js';
+import { router as friendRouter } from './routes/friend_routes.js';
 
 // dirname = nome directory
 const __dirname = import.meta.dirname;
@@ -26,6 +27,7 @@ app.use(express.json());
 // Rende disponibili tutte le route di un router specifico (scrivendo solo "/")
 app.use("/", userRouter);
 app.use("/", threadRouter);
+app.use("/", friendRouter);
 
 // Variabile isLoggedIn
 app.use((req, res, next) => {
@@ -52,7 +54,10 @@ app.get('/', isAuthenticated, async (req, res) => {
     }
 });
 
-// Se viene inserita una rotta non conosciuta
+// ---------------------------------------------------
+// ERRORI
+// ---------------------------------------------------
+// 404 Page
 app.use((req, res) => {
     res.render('errors/404', { layout: false });
 });

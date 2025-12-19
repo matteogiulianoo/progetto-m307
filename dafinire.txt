@@ -1,7 +1,4 @@
 - Aggiungere il bottone: aggiungi commento (tabella commenti che ha come foreign key un idThread) (PENINDG)
 - Fare la pagina supporto con il contact form (PENINDG)
-- Fare 500 (quando il server restituisce un errore) (PENINDG)
-- Friends System (PENINDG)
-- Pagina Staff e Pagina Utenti (PENINDG)
-- Alert tag se ho tempo (PENINDG)
-- Refactor File Structure (IN CORSO)
+- Friends System (Logica OK | Impl. Mancanti)
+- Pagina Staff e Pagina Utenti (IN CORSO) - counter friends

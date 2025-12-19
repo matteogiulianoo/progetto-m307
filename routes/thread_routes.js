@@ -72,6 +72,8 @@ router.delete('/deleteThread', isAuthenticated, async (req, res) => {
 
     try {
         await deleteThreads(idThread, idUser);
+        const remove = await removeStars(req.session.idUser, 15);
+        if (!remove) return;
         res.json({ success: true });
     } catch (e) {
         if (e.message === 'Unauthorized to delete this thread') {
